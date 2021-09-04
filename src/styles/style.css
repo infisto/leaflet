@@ -1,0 +1,41 @@
+@font-face {
+  src: url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  font-style: normal;
+  font-weight: normal;
+}
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+input[type="text"] {
+  border: none;
+  outline: none;
+  background-color: #f2f6f7;
+  padding: .5rem;
+  width: 100%;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  width: 100%;
+}
+ul li {
+  width: 100%;
+}
+ul li:hover {
+  cursor: pointer;
+  background-color: #f2f6f7;
+}
+ul li.active {
+  background-color: #ccc4c5;
+}
+div.active {
+  color: green;
+}
+h2 {
+  text-align: center;
+}
