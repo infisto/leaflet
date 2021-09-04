@@ -5,7 +5,7 @@
   </header>
   <section>
     <input type="text" placeholder="Поиск..." @input="setInputValue($event.target.value)">
-    <ul ref="carList" v-if="sortedListOfCars.length">
+    <ul v-if="sortedListOfCars.length">
       <li v-for="car in sortedListOfCars" :key="car.id" @click="findCar(car)" :class="{active: id === car.id}">
         {{car.name}}
       </li>
