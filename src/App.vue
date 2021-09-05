@@ -1,8 +1,14 @@
 <template>
   <div id="app">
-    <router-view/>
+    <Map></Map>
   </div>
 </template>
+<script>
+import Map from '@/views/Map'
+export default {
+  components: {Map}
+}
+</script>
 <style lang="scss">
 #app {
   height: 100%;

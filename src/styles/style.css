@@ -33,9 +33,6 @@ ul li:hover {
 ul li.active {
   background-color: #ccc4c5;
 }
-div.active {
-  color: green;
-}
 h2 {
   text-align: center;
 }

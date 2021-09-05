@@ -8,13 +8,13 @@
             :key="car.id"
             :lat-lng="[car.latitude, car.longitude]"
             :radius="circle.radius"
-            :color="id === car.id ? 'green' : '#fa5271'"
+            :color="carID === car.id ? 'green' : '#fa5271'"
             @click="findCar(car, index)"
         >
           <l-tooltip>{{car.name}}</l-tooltip>
         </l-circle-marker>
       </l-map>
-      <search-bar class="map-search-bar" @findCar="findCar" :id="id" @setInputValue="setInputValue"></search-bar>
+      <search-bar class="map-search-bar" @findCar="findCar" :carID="carID" @setInputValue="setInputValue"></search-bar>
     </div>
   </div>
 </template>
@@ -34,13 +34,13 @@ export default {
       circle: {
         radius: 10,
       },
-      id: null,
-      inputValue: ''
+      carID: null,
+      inputValue: '',
     };
   },
   methods: {
     findCar(car) {
-      this.id = car.id
+      this.carID = car.id
       this.center = [car.latitude, car.longitude]
       if (this.zoom !== 12) {
         setTimeout(() => {
@@ -67,11 +67,11 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style>
 .map-wrapper {
   height: 100%;
   width: 100%;
-  background-color: #d2fce8;
+  background-color: #e6faf0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,8 +80,6 @@ export default {
   height: 80%;
   max-width: 90%;
   flex: 1 0 auto;
-  -webkit-box-shadow: 12px 18px 55px 19px rgba(34, 60, 80, 0.38);
-  -moz-box-shadow: 12px 18px 55px 19px rgba(34, 60, 80, 0.38);
   box-shadow: 12px 18px 55px 19px rgba(34, 60, 80, 0.38);
   position: relative;
 }
@@ -92,13 +90,11 @@ export default {
   right: 2rem;
   z-index: 10000;
   height: 90%;
-  background-color: #faa5b5;
+  background-color: white;
   border-radius: .5rem;
   transition: .3s;
 }
 .map-search-bar:hover {
-  -webkit-box-shadow: -1px -2px 25px 7px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: -1px -2px 25px 7px rgba(34, 60, 80, 0.2);
   box-shadow: -1px -2px 25px 7px rgba(34, 60, 80, 0.2);
 }
 </style>

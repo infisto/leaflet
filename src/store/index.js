@@ -68,10 +68,6 @@ export default new Vuex.Store({
             }
         ]
     },
-    mutations: {
-    },
-    actions: {},
-    modules: {},
     getters: {
         getObjects(state) {
             return state.objectList

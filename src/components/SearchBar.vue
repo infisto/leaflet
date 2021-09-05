@@ -6,7 +6,7 @@
   <section>
     <input type="text" placeholder="Поиск..." @input="setInputValue($event.target.value)">
     <ul v-if="sortedListOfCars.length">
-      <li v-for="car in sortedListOfCars" :key="car.id" @click="findCar(car)" :class="{active: id === car.id}">
+      <li v-for="car in sortedListOfCars" :key="car.id" @click="findCar(car)" :class="{active: carID === car.id}">
         {{car.name}}
       </li>
     </ul>
@@ -20,11 +20,10 @@
 <script>
 export default {
   name: "SearchBar",
-  props: ['id'],
+  props: ['carID'],
   data() {
     return {
-      inputValue: '',
-      listLi: []
+      inputValue: ''
     }
   },
   methods: {
