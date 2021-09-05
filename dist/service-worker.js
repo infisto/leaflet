@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/leaflet/precache-manifest.1e46bebc8a0595672c3716f77d98386f.js"
+  "/leaflet/precache-manifest.fc79f0c82658512d24d57e9929b26196.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "leaflet"});
