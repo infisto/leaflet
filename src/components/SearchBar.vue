@@ -23,7 +23,7 @@ export default {
   props: ['carID'],
   data() {
     return {
-      inputValue: ''
+      inputValue: '',
     }
   },
   methods: {
@@ -37,11 +37,7 @@ export default {
   },
   computed: {
     sortedListOfCars() {
-      return this.$store.getters.getObjects.filter(item => {
-        if (item.name.toLowerCase().includes(this.inputValue.toLowerCase())) {
-          return item
-        }
-      })
+      return this.$store.getters.getSortedListOfCars(this.inputValue)
     }
   },
 }

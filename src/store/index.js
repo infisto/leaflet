@@ -69,8 +69,6 @@ export default new Vuex.Store({
         ]
     },
     getters: {
-        getObjects(state) {
-            return state.objectList
-        }
+        getSortedListOfCars: state => carName => state.objectList.filter(item => item.name.toLowerCase().includes(carName.toLowerCase())),
     }
 })

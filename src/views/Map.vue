@@ -4,14 +4,14 @@
       <l-map style="height: 100%" :zoom="zoom" :center="center" :max-zoom="12" :min-zoom="6" @update:zoom="zoomUpdated">
         <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
         <l-circle-marker
-            v-for="(car, index) in sortedListOfCars"
+            v-for="car in sortedListOfCars"
             :key="car.id"
             :lat-lng="[car.latitude, car.longitude]"
             :radius="circle.radius"
             :color="carID === car.id ? 'green' : '#fa5271'"
-            @click="findCar(car, index)"
+            @click="findCar(car)"
         >
-          <l-tooltip>{{car.name}}</l-tooltip>
+          <l-tooltip>{{ car.name }}</l-tooltip>
         </l-circle-marker>
       </l-map>
       <search-bar class="map-search-bar" @findCar="findCar" :carID="carID" @setInputValue="setInputValue"></search-bar>
@@ -21,10 +21,11 @@
 
 <script>
 import SearchBar from "@/components/SearchBar";
+
 export default {
   name: "Map",
   components: {SearchBar},
-  data () {
+  data() {
     return {
       url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution:
@@ -35,33 +36,29 @@ export default {
         radius: 10,
       },
       carID: null,
-      inputValue: '',
+      inputValue: ''
     };
   },
   methods: {
     findCar(car) {
-      this.carID = car.id
-      this.center = [car.latitude, car.longitude]
+      this.carID = car.id;
+      this.center = [car.latitude, car.longitude];
       if (this.zoom !== 12) {
         setTimeout(() => {
-          this.zoom = 12
+          this.zoom = 12;
         }, 700)
       }
     },
     setInputValue(data) {
-      this.inputValue = data
+      this.inputValue = data;
     },
-    zoomUpdated (zoom) {
+    zoomUpdated(zoom) {
       this.zoom = zoom;
     },
   },
   computed: {
     sortedListOfCars() {
-      return this.$store.getters.getObjects.filter(item => {
-        if (item.name.toLowerCase().includes(this.inputValue.toLowerCase())) {
-          return item
-        }
-      })
+      return this.$store.getters.getSortedListOfCars(this.inputValue);
     }
   }
 }
@@ -76,6 +73,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
 .map-wrapper__inner {
   height: 80%;
   max-width: 90%;
@@ -83,6 +81,7 @@ export default {
   box-shadow: 12px 18px 55px 19px rgba(34, 60, 80, 0.38);
   position: relative;
 }
+
 .map-search-bar {
   min-width: 300px;
   position: absolute;
@@ -94,6 +93,7 @@ export default {
   border-radius: .5rem;
   transition: .3s;
 }
+
 .map-search-bar:hover {
   box-shadow: -1px -2px 25px 7px rgba(34, 60, 80, 0.2);
 }
