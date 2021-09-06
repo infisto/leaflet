@@ -5,7 +5,7 @@
   </header>
   <section>
     <input type="text" placeholder="Поиск..." @input="setInputValue($event.target.value)">
-    <ul v-if="sortedListOfCars.length">
+    <ul v-if="carsAmount">
       <li v-for="car in sortedListOfCars" :key="car.id" @click="findCar(car)" :class="{active: carID === car.id}">
         {{car.name}}
       </li>
@@ -38,6 +38,9 @@ export default {
   computed: {
     sortedListOfCars() {
       return this.$store.getters.getSortedListOfCars(this.inputValue)
+    },
+    carsAmount() {
+      return this.sortedListOfCars.length
     }
   },
 }

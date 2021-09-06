@@ -9,7 +9,7 @@ export default {
   components: {Map}
 }
 </script>
-<style lang="scss">
+<style>
 #app {
   height: 100%;
 }
