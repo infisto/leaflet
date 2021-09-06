@@ -20,7 +20,7 @@
 <script>
 export default {
   name: "SearchBar",
-  props: ['carID'],
+  props: ['carID', 'sortedListOfCars'],
   data() {
     return {
       inputValue: '',
@@ -36,9 +36,6 @@ export default {
     }
   },
   computed: {
-    sortedListOfCars() {
-      return this.$store.getters.getSortedListOfCars(this.inputValue);
-    },
     carsAmount() {
       return this.sortedListOfCars.length;
     }

@@ -14,7 +14,7 @@
           <l-tooltip>{{ car.name }}</l-tooltip>
         </l-circle-marker>
       </l-map>
-      <search-bar class="map-search-bar" @findCar="findCar" :carID="carID" @setInputValue="setInputValue"></search-bar>
+      <search-bar class="map-search-bar" @findCar="findCar" :sortedListOfCars="sortedListOfCars" :carID="carID" @setInputValue="setInputValue"></search-bar>
     </div>
   </div>
 </template>
